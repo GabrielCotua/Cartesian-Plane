@@ -1,18 +1,26 @@
 
 public class Table {
     // Final variables
-    static final int XMAXSIZE = 10;
-    static final int YMAXSIZE = 10;
-    static final int XMINSIZE = 10;
-    static final int YMINSIZE = 10;
+    static final int XMAXSIZE = 50;
+    static final int YMAXSIZE = 50;
     static final String aristaSymbol = "@";
     static String[][] map = new String[YMAXSIZE][XMAXSIZE];
 
     public Table() {
     }
 
+    public static void showTable(Point[][] listPoints){
+        int x = 0;
+        Point[] points = new Point[listPoints.length * listPoints[0].length];
+        for (int i = 0; i < listPoints.length; i++) {
+            for (int j = 0; j < listPoints[i].length; j++) {
+                points[x] = listPoints[i][j];
+                x++;
+            }
+        }
+        showTable(points);
+    }
     public static void showTable(Point[] listPoints) {
-
         setPointsInMap(listPoints);
 
         System.out.print("  ");
@@ -29,21 +37,21 @@ public class Table {
             System.out.println();
         }
     }
-    public static void setPointsInMap(Point[] listPoints) {
 
-        for (int i = 0; i < map.length; i++) {
-            for (int j = 0; j < map[i].length; j++) {
-                for (int x = 0; x < listPoints.length; x++) {
-                    if (listPoints[x].getX() == j && listPoints[x].getY() == i) {
-                        map[i][j] = aristaSymbol;
-                        break;
-                    } else {
-                        map[i][j] = " ";
-                    }
-                }
-            }
+public static void setPointsInMap(Point[] listPoints) {
+
+    for (int i = 0; i < map.length; i++) {
+        for (int j = 0; j < map[i].length; j++) {
+            map[i][j] = " ";
         }
     }
+
+    for (Point p : listPoints) {
+        if (p.getX() >= 0 && p.getX() < XMAXSIZE && p.getY() >= 0 && p.getY() < YMAXSIZE) {
+            map[p.getY()][p.getX()] = aristaSymbol;
+        }
+    }
+}
 }
 
 /*

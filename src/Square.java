@@ -1,4 +1,4 @@
-public class Square extends Point implements Shape{
+public class Square implements Shape {
 
 
     @Override
@@ -12,7 +12,7 @@ public class Square extends Point implements Shape{
     }
 
     @Override
-    public int getSlant(Point p1, Point p2) {
+    public double getSlant(Point other) {
         return 0;
     }
 

@@ -52,8 +52,12 @@ public class Point implements Shape{
 
 
     @Override
-    public int getSlant(Point p1, Point p2) {
-        return (int) (p2.getY() - p1.getY()) / (p2.getX() - p1.getX());
+    public double getSlant(Point other) {
+        if (this.getX() - other.getX() == 0) {
+            return 0;
+        }
+
+        return Math.round((long)((double)(this.getY() - other.getY()) / (double)(this.getX() - other.getX())));
     }
 
 
@@ -61,5 +65,19 @@ public class Point implements Shape{
     @Override
     public void draw() {
 
+    }
+
+    public static void showPoints(Point[] pList) {
+            for (Point x : pList) {
+                System.out.println(x);
+        }
+    }
+
+    public static void showPoints(Point[][] pList) {
+        for (int i = 0; i < pList.length; i++) {
+            for (int  j = 0; j < pList[i].length; j++) {
+                System.out.println(pList[i][j]);
+            }
+        }
     }
 }

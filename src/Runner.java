@@ -25,6 +25,6 @@ public class Runner {
                     pList[i - 1].getDistance(pList[i]));
         }
 
-        Table.showTable(pList);
+       // Table.showTable(pList);
     }
 }
