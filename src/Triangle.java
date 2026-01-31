@@ -44,15 +44,13 @@ public class Triangle implements Shape {
 
     @Override
     public void draw() {
-        // We will collect all points (vertices + lines) into one list
-        // 3 sides * 10 points per side = 30 points
+
         int[] steps = { (int) pList[0].getDistance(pList[1]),
                         (int) pList[1].getDistance(pList[2]),
                         (int) pList[2].getDistance(pList[0])};
         Point[] allPoints = new Point[(steps[1] + steps[2] + steps[0]) ];
         int counter = 0;
 
-        // Connect: p0->p1, p1->p2, and p2->p0
         counter = interpolate(pList[0], pList[1], allPoints, counter, steps[0]);
         counter = interpolate(pList[1], pList[2], allPoints, counter, steps[1]);
         counter = interpolate(pList[2], pList[0], allPoints, counter, steps[2]);
